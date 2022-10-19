@@ -10,9 +10,7 @@ selección de las n variables más relevantes usando una prueba f.
 # pylint: disable=unsubscriptable-object
 
 import pandas as pd
-# df = pd.read_csv('insurance.csv',sep=',')
-# print(df.describe())
-# print(df.info())
+import numpy as np
 
 def pregunta_01():
     """
