@@ -109,7 +109,7 @@ def pregunta_03():
     )
     
     # Cargua de las variables.
-    X_train,X_test,y_train,y_test = pregunta_02()
+    x_train,x_test,y_train,y_test = pregunta_02()
     
     # Defina un diccionario de parámetros para el GridSearchCV. Se deben
     # considerar valores desde 1 hasta 11 regresores para el modelo
@@ -124,13 +124,13 @@ def pregunta_03():
         estimator=pipeline,
         param_grid=param_grid,
         cv=5,
-        scoring='neg_root_mean_squared_error',
+        scoring='neg_mean_squared_error',
         refit=True,
         return_train_score=True,
     )
     
     # Búsque la mejor combinación de regresores
-    gridSearchCV.fit(X_train, y_train)
+    gridSearchCV.fit(x_train, y_train)
 
     # Retorne el mejor modelo
     return gridSearchCV
