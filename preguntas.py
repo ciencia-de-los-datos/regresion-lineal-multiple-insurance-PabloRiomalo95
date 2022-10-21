@@ -138,35 +138,36 @@ def pregunta_03():
 
 def pregunta_04():
     """
-    Evaluación del modelo
+    EvaluaciÃ³n del modelo
     -------------------------------------------------------------------------------------
     """
-
     # Importe mean_squared_error
-    from ____ import ____
-
+    from sklearn.metrics import mean_squared_error
+    
     # Obtenga el pipeline optimo de la pregunta 3.
     gridSearchCV = pregunta_03()
-
+    
     # Cargue las variables.
     X_train, X_test, y_train, y_test = pregunta_02()
-
-    # Evalúe el modelo con los conjuntos de entrenamiento y prueba.
-    y_train_pred = ____.____(____)
-    y_test_pred = ____.____(____)
-
+    
+    # EvalÃºe el modelo con los conjuntos de entrenamiento y prueba.
+    y_train_pred =gridSearchCV.predict(X_train)
+    y_test_pred = gridSearchCV.predict(X_test)
+    
+    
     # Compute el error cuadratico medio de entrenamiento y prueba. Redondee los
     # valores a dos decimales.
-
-    mse_train = ____(
-        _____,
-        _____,
+    
+    mse_train = mean_squared_error(
+        y_train,
+        y_train_pred,
+    ).round(2)
+    
+    mse_test = mean_squared_error(
+        y_test,
+        y_test_pred,
     ).round(2)
 
-    mse_test = ____(
-        _____,
-        _____,
-    ).round(2)
 
-    # Retorne el error cuadrático medio para entrenamiento y prueba
+    # Retorne el error cuadrÃ¡tico medio para entrenamiento y prueba
     return mse_train, mse_test
